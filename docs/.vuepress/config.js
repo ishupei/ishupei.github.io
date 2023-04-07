@@ -7,7 +7,7 @@ module.exports = {
     sidevar: "auto",
     nav: [
       { text: "Home", link: "/" },
-      { text: "Guide", link: "/guide/" },
+      { text: "About", link: "/about/" },
       { text: "环境安装指南", link: "/env/" },
     ],
   },
