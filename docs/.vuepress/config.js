@@ -1,5 +1,7 @@
+const plugins = require("./config/plugin");
+
 module.exports = {
-  title: "自律",
+  title: "hupei's blog",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   themeConfig: {
     // logo: "/assets/img/logo.png",
@@ -8,7 +10,8 @@ module.exports = {
     nav: [
       { text: "Home", link: "/" },
       { text: "About", link: "/about/" },
-      { text: "环境安装指南", link: "/env/" },
+      { text: "环境安装", link: "/env/" },
     ],
   },
+  plugins: plugins,
 };
