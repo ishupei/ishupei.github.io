@@ -1,49 +1,33 @@
-# ci脚本的名称
-name: VUEPRESS CI
-# 触发的时机
+# name 可以自定义
+name: VUEPRESS ACTION
+
+# 触发条件：在 push 到 main/master 分支后，新的 Github 项目 应该都是 main，而之前的项目一般都是 master
 on:
-  # 在push阶段触发
   push:
-    # 对应的分支
-    branches: [ master ]
-  # 在PR阶段触发
-  pull_request:
-    # 对应的分支
-    branches: [ master ]
-# 执行的任务
+    branches:
+      - master
+
+# 任务
 jobs:
-  # 任务名称
-  build:
-    # 执行的环境，默认是在最新版本的Ubuntu系统
+  build-and-deploy:
+    # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
-    # 执行的步骤
     steps:
-      # checkout代码
-      # 其中actions是github官方账号，checkout是改账号下提供的库，可以直接拿来使用，对应的版本是v2
-      # setup-node同上
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        # 设置node的版本
+      # 拉取代码
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          node-version: '14'
-        # 执行步骤的名称
-      - name: Compiling start
-        # 执行的具体脚本
-        run: echo Compiling start!
-        # 如果在执行的时候报错，提示需要用户名跟邮箱，那么需要单独设置下邮箱跟用户名
-      - run: git config --global user.email "ishupei@qq.com"
-      - run: git config --global user.name "hupei"
-        # 执行安装跟打包命令
-      - run: npm install && npm run docs:build
+          persist-credentials: false
+
+      # 生成静态文件
+      - name: Build
+        run: npm install && npm run build
+
+      # 部署到 GitHub Pages
       - name: Deploy
-        # 这个是第三方提供的库，可以推送打包后的内容到指定分支
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          # 这边需要设置第二步获取到的deploy key，否则会提示没有权限推送代码
-          deploy_key: ${{ secrets.VUE3STUDY }}
-          # 推送到该仓库中，地址格式为github名称/仓库名
-          external_repository: ishupei/ishupei.github.io
-          # 推送的分支
-          publish_branch: dist-pages
-          # 推送的内容
-          publish_dir: docs/.vuepress/dist
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
+          BRANCH: dist-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
+          FOLDER: docs/.vuepress/dist # vuepress 生成的静态文件存放的地方
+
