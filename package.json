@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ishupei/docs#readme",
   "dependencies": {
+    "node-sass": "^8.0.0",
     "vue-template-compiler": "^2.7.14"
   },
   "devDependencies": {
@@ -27,9 +28,5 @@
     "@vuepress/plugin-back-to-top": "^1.9.9",
     "vuepress": "^1.9.9",
     "vuepress-plugin-auto-sidebar": "^2.3.2"
-  },
-  "optionalDependencies": {
-    "fsevents": "*"
-}
-
+  }
 }
