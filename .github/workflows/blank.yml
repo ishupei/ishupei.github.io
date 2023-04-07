@@ -7,18 +7,31 @@ on:
     branches:
       - master
 
-# 任务
+# 执行的任务
 jobs:
-  build-and-deploy:
-    # 服务器环境：最新版 Ubuntu
+  # 任务名称
+  build:
+    # 执行的环境，默认是在最新版本的Ubuntu系统
     runs-on: ubuntu-latest
+    # 执行的步骤
     steps:
-      # 拉取代码
-      - name: Checkout
-        uses: actions/checkout@v2
+      # checkout代码
+      # 其中actions是github官方账号，checkout是改账号下提供的库，可以直接拿来使用，对应的版本是v2
+      # setup-node同上
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        # 设置node的版本
         with:
           node-version: "14"
-          persist-credentials: false
+        # 执行步骤的名称
+      - name: Compiling start
+        # 执行的具体脚本
+        run: echo Compiling start!
+        # 如果在执行的时候报错，提示需要用户名跟邮箱，那么需要单独设置下邮箱跟用户名
+      - run: git config --global user.email "your email address"
+      - run: git config --global user.name "your user name"
+        # 执行安装跟打包命令
+      - run: npm install && npm run build
 
       # 生成静态文件
       - name: Build
