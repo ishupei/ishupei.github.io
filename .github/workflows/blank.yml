@@ -10,7 +10,7 @@ on:
 # 执行的任务
 jobs:
   # 任务名称
-  build:
+  build-and-deploy:
     # 执行的环境，默认是在最新版本的Ubuntu系统
     runs-on: ubuntu-latest
     # 执行的步骤
@@ -26,10 +26,11 @@ jobs:
         # 执行步骤的名称
       - name: Compiling start
         # 执行的具体脚本
+        
         run: echo Compiling start!
         # 如果在执行的时候报错，提示需要用户名跟邮箱，那么需要单独设置下邮箱跟用户名
-      - run: git config --global user.email "your email address"
-      - run: git config --global user.name "your user name"
+      - run: git config --global user.email "ishupei@qq.com"
+      - run: git config --global user.name "ishupei"
         # 执行安装跟打包命令
       - run: npm install && npm run build
 
@@ -42,6 +43,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
-          BRANCH: dist-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
+          BRANCH: dist-pages # 部署到 dist-pages 分支，因为 main 分支存放的一般是源码，而 dist-pages 分支则用来存放生成的静态文件
           FOLDER: docs/.vuepress/dist # vuepress 生成的静态文件存放的地方
 
