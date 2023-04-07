@@ -26,17 +26,13 @@ jobs:
         # 执行步骤的名称
       - name: Compiling start
         # 执行的具体脚本
-        
+
         run: echo Compiling start!
         # 如果在执行的时候报错，提示需要用户名跟邮箱，那么需要单独设置下邮箱跟用户名
       - run: git config --global user.email "ishupei@qq.com"
       - run: git config --global user.name "ishupei"
         # 执行安装跟打包命令
-      - run: npm install && npm run build
-
-      # 生成静态文件
-      - name: Build
-        run: npm install && build
+      - run: cnpm install && cnpm run build
 
       # 部署到 GitHub Pages
       - name: Deploy
