@@ -10,6 +10,7 @@
 
 (一) 新建系统变量 JAVA_HOME
 ![img](https://img-blog.csdnimg.cn/img_convert/2082577d9e69e77881a484b38f0c296e.png)
+<img src="https://img-blog.csdnimg.cn/img_convert/2082577d9e69e77881a484b38f0c296e.png" alt="" />
 
 (二) 配置 path 系统变量
 
