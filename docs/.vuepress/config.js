@@ -2,7 +2,7 @@ const plugins = require("./config/plugin");
 const nav = require("./config/nav");
 
 module.exports = {
-  title: "hupei's blog",
+  title: "hupei's note",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   themeConfig: {
     // logo: "/assets/img/logo.png",

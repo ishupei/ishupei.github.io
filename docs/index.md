@@ -1,9 +1,9 @@
 ---
 home: true
-heroText: 我的博客
+heroText: 随笔
 tagline: 你灵魂的欲望是你命运的先知
 # heroImage: /hero.png
-actionText: Get Started →
+# actionText: Get Started →
 # actionLink: /guide/
 # features:
 #   - title: Simplicity First
@@ -12,5 +12,5 @@ actionText: Get Started →
 #     details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
 #   - title: Performant
 #     details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-footer: MIT Licensed | Copyright © 2018-present Evan You
+# footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
