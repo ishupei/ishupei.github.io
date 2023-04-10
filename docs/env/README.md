@@ -6,7 +6,7 @@ title: env
 
 ::: tip  
 :point_right: 前缀标识 <b>\*</b> 为项目必须具备的环境，所选版本的标准以稳定、使用广泛为主。<br/><br/>
-:point_right: 强烈建议：养成良好习惯，请在 D 或 E 盘下新建 `environment` 文件夹，将所有的环境\工具都安装到该文件夹内。
+:point_right: 强烈建议：养成良好习惯， D 或 E 盘下新建 `environment` 文件夹，存放所有的环境 \ 工具。
 :::
 
 - <a href="/env/jdk">\* JDK 1.8</a>
