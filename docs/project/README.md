@@ -14,10 +14,6 @@ title: 毕设成品
 
 ## 贫困生管理系统
 
-系统演示：<br>
-
-<video src="http://8.134.87.201:9999/f/acb172c5da254b93a282/?dl=1" controls width="500" height="300"></video>
-
 ## 教学管理系统
 
 ## 个人博客系统
