@@ -18,7 +18,7 @@ git commit -m 'deploy'
 
 
 # 如果发布到 https://<USERNAME>.github.io
-git push -f git@github.com:ishupei/ishupei.github.io.git master:dist-pages
+git push -f ishupei/ishupei.github.io.git master:dist-pages
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
