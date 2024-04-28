@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/ishupei/docs#readme",
   "dependencies": {
-    "vue-template-compiler": "^2.7.14"
+    "vue-template-compiler": "^2.7.14",
+    "vuepress-plugin-comment": "^0.7.3"
   },
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.9.9",
