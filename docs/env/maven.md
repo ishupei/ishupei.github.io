@@ -2,7 +2,7 @@
 title: maven
 ---
 
-### 安装步骤：
+### maven环境安装
 - 如果你从未安装过 maven，建议你安装在`D:\environment`目录与我保持一致，方便后续的项目部署。
 - 点击下载<a href="http://hupei.fun:15000/sharing/ZNSRrSCU0">链接</a>，解压到上述文件夹。
 - 注意文件名，解压后最终的层级效果如下：
