@@ -11,10 +11,17 @@ title: JDK
 
 我的电脑-->右键-->属性-->高级系统设置-->环境变量-->系统环境变量
 
-(一) 新建系统变量 JAVA_HOME
-![img](/img/env/jdk-1.png)
+(一) 新建系统变量 <br />
 
-(二) 配置 path 系统变量
+::: tip JAVA_HOM
+D:\environment\java\jdk1.8
+:::
+
+(二) 配置 path 系统变量 <br />
+::: tip 系统变量
+%JAVA_HOME%\bin  <br />
+%JAVA_HOME%\jre\bin
+:::
 
 ![img](/img/env/jdk-2.png)
 
