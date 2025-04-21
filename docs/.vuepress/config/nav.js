@@ -1,8 +1,7 @@
 module.exports = [
   { text: "首页", link: "/" },
   { text: "关于", link: "/about/" },
-  { text: "毕设成品", link: "/project/" },
-  { text: "接单流程", link: "/flow/" },
+  { text: "毕设接单", link: "/flow/" },
   { text: "环境安装", link: "/env/" },
   { text: "视频合集", link: "/video/" },
 ];
