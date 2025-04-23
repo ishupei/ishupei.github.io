@@ -1,51 +1,42 @@
-name: Deploy to GitHub Pages
+name: Deploy Docs
 
 on:
   push:
-    branches: [ main ]  # 或你的默认分支名称
+    tags:
+      - v*
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  deploy-docs:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "pnpm"
+          node-version: 22
+          cache: pnpm
 
-      # 强制使用 pnpm 并忽略引擎检查
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
 
-      # 显式禁用 yarn
-      - name: Disable yarn
-        run: |
-          npm config set ignore-scripts true
-          npm config set yarn false
+      - name: Build Packages
+        run: pnpm build:package
 
-      - name: Install dependencies
-        run: |
-          pnpm install --no-frozen-lockfile
-          pnpm config set engine-strict false
-
-      - name: Build project
+      - name: Docs build
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
         run: pnpm docs:build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy docs
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/.vuepress/dist
-          # cname: yourdomain.com # 如果有自定义域名取消注释
+          branch: gh-pages
+          folder: docs/.vuepress/dist
+          single-commit: true
