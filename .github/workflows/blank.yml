@@ -8,11 +8,7 @@ on:
 jobs:
   docs:
     runs-on: ubuntu-latest
-    env:
-      # 设置全局环境变量
-      PNPM_HOME: /usr/local/bin
-      PATH: ${{ env.PNPM_HOME }}:${{ env.PATH }}
-
+    
     steps:
       - uses: actions/checkout@v4
 
@@ -23,24 +19,26 @@ jobs:
           node-version: "22.11.0"
           cache: 'pnpm'
 
-      # 2. 安装 pnpm (显式指定版本和安装位置)
-      - name: Install pnpm
+      # 2. 安装 pnpm (使用官方 pnpm action)
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      # 3. 设置 PATH (正确方式)
+      - name: Add pnpm to PATH
         run: |
-          npm install -g pnpm@8 --prefix /usr/local
-          echo "pnpm path: $(which pnpm)"
-          echo "pnpm version: $(pnpm -v)"
+          echo "$(npm prefix -g)/bin" >> $GITHUB_PATH
           echo "PATH: $PATH"
 
-      # 3. 验证 pnpm 可用性
+      # 4. 验证 pnpm
       - name: Verify pnpm
         run: |
-          if ! command -v pnpm &> /dev/null; then
-            echo "::error::pnpm command not found!"
-            exit 1
-          fi
           pnpm -v
+          which pnpm
 
-      # 4. 缓存配置
+      # 5. 缓存配置
       - name: Cache pnpm dependencies
         uses: actions/cache@v4
         id: pnpm-cache
@@ -52,17 +50,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      # 5. 安装依赖
+      # 6. 安装依赖
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
           pnpm store prune
 
-      # 6. 构建项目
+      # 7. 构建项目
       - name: Build VuePress site
         run: pnpm run docs:build
 
-      # 7. 部署
+      # 8. 部署
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
