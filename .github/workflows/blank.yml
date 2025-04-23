@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8  # 或具体版本号，如 "8.15.0"
+          version: 7  # 使用与 lockfile 兼容的版本
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,7 +28,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Packages
-        run: pnpm build:package
+        run: pnpm docs:build
 
       - name: Docs build
         env:
