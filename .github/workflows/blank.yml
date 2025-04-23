@@ -8,6 +8,10 @@ on:
 jobs:
   docs:
     runs-on: ubuntu-latest
+    env:
+      # 设置全局环境变量
+      PNPM_HOME: /usr/local/bin
+      PATH: ${{ env.PNPM_HOME }}:${{ env.PATH }}
 
     steps:
       - uses: actions/checkout@v4
@@ -19,22 +23,25 @@ jobs:
           node-version: "22.11.0"
           cache: 'pnpm'
 
-      # 2. 显式安装 pnpm
+      # 2. 安装 pnpm (显式指定版本和安装位置)
       - name: Install pnpm
         run: |
-          npm install -g pnpm@8
-          echo "PNPM version: $(pnpm -v)"
+          npm install -g pnpm@8 --prefix /usr/local
+          echo "pnpm path: $(which pnpm)"
+          echo "pnpm version: $(pnpm -v)"
           echo "PATH: $PATH"
-          echo "which pnpm: $(which pnpm)"
 
-      # 3. 设置 PATH 确保能找到 pnpm
-      - name: Setup PATH
+      # 3. 验证 pnpm 可用性
+      - name: Verify pnpm
         run: |
-          echo "$(npm prefix -g)/bin" >> $GITHUB_PATH
-          echo "Updated PATH: $PATH"
+          if ! command -v pnpm &> /dev/null; then
+            echo "::error::pnpm command not found!"
+            exit 1
+          fi
+          pnpm -v
 
-      # 4. 恢复缓存
-      - name: Restore pnpm cache
+      # 4. 缓存配置
+      - name: Cache pnpm dependencies
         uses: actions/cache@v4
         id: pnpm-cache
         with:
