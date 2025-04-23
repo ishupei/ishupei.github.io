@@ -40,7 +40,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}  # 改用 token 参数
           branch: dist-pages
-          folder: docs/.vuepress/dist
+          folder: src/.vuepress/dist
           single-commit: true
           clean: true  # 可选：部署前清理目标分支
           force: true  # 可选：强制推送
