@@ -1,7 +1,7 @@
-name: docs
+name: Docs Deployment
 
 on:
-  # 每当 push 到 main 分支时触发部署
+  # 每当 push 到 master 分支时触发部署
   push:
     branches: [master]
   # 手动触发部署
@@ -12,50 +12,63 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
-          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          # 获取完整的提交历史用于生成"最近更新时间"
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          # 选择要使用的 node 版本
-          node-version: "16.19.1"
+          # 使用 Node.js 22.11.0
+          node-version: "22.11.0"
+          # 自动安装对应版本的 pnpm
+          cache: 'pnpm'
         env:
+          # 增加 Node.js 内存限制
           NODE_OPTIONS: "--max_old_space_size=8192"
 
-      # 缓存 node_modules
-      # - name: Cache dependencies
-      #   uses: actions/cache@v2
-      #   id: yarn-cache
-      #   with:
-      #     path: |
-      #       **/node_modules
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
+      # 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      # 缓存 pnpm 依赖
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v4
+        id: pnpm-cache
+        with:
+          path: |
+            ​**/node_modules
+            ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
 
       # 如果缓存没有命中，安装依赖
       - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
 
       # 运行构建脚本
       - name: Build VuePress site
         env:
           NODE_OPTIONS: "--max_old_space_size=8192"
-        run: npm run docs:build
+        run: pnpm run docs:build
 
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v4
         with:
-          # 部署到 gh-pages 分支
+          # 部署到 dist-pages 分支
           target_branch: dist-pages
           # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
+          # 保留部署历史
+          keep_history: true
+          # 使用强制推送
+          force_orphan: true
         env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-          GITHUB_TOKEN: ${{ secrets.VUEPRESS_TOKEN }}
+          # 使用 GitHub Token 进行认证
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
