@@ -2,6 +2,7 @@ import { hopeTheme } from "vuepress-theme-hope";
 
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
+import plugin from "./plugin.js";
 
 export default hopeTheme({
   hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
@@ -127,7 +128,7 @@ export default hopeTheme({
     //   category: "Announcements",
     //   categoryId: "DIC_kwDOG_Pt2M4COD69",
     // },
-
+    ...plugin,
     components: {
       components: ["Badge", "VPCard"],
     },

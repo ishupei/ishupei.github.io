@@ -2,7 +2,7 @@
 home: true
 portfolio: true
 title: 档案主页
-icon: house
+icon: explosion
 welcome: 👋 人生目标：早日躺平，睡到自然醒。
 name: HuPei
 avatar: https://theme-hope-assets.vuejs.press/hero/conan.png

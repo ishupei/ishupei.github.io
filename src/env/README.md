@@ -1,6 +1,6 @@
 ---
 title: 环境配置
-icon: house
+icon: gear
 ---
 
 # 开发环境列表
