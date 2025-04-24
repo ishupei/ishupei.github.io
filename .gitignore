@@ -1,4 +1,3 @@
-# Node.js / npm
 node_modules/
 .npm/
 .npmrc
@@ -6,7 +5,6 @@ package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
-# VuePress 构建输出
 public/
 .vuepress/dist/
 
@@ -15,18 +13,15 @@ src/.vuepress/.cache/
 .vuepress/.temp/
 src/.vuepress/public/  # 如果手动创建了 public 目录（通常不需要）
 
-# 日志和调试文件
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# 环境变量文件（不要提交敏感信息）
 .env.*
 !.env.example
 
-# IDE / 编辑器相关
 .vscode/
 .idea/
 *.suo
@@ -37,11 +32,9 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# 测试相关
 coverage/
 .nyc_output/
 
-# 其他可能的临时文件
 *.tmp
 *.temp
 
