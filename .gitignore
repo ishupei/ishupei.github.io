@@ -1,24 +1,47 @@
-.DS_Store
+# Node.js / npm
 node_modules/
-dist/
+.npm/
+.npmrc
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# VuePress 构建输出
+public/
+.vuepress/dist/
+
+# VuePress 缓存和临时文件
+src/.vuepress/.cache/
+.vuepress/.temp/
+src/.vuepress/public/  # 如果手动创建了 public 目录（通常不需要）
+
+# 日志和调试文件
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-**/*.log
 
-tests/**/coverage/
-tests/e2e/reports
-selenium-debug.log
+# 环境变量文件（不要提交敏感信息）
+.env.*
+!.env.example
 
-# Editor directories and files
-.idea
-.vscode
+# IDE / 编辑器相关
+.vscode/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.local
-# vuepress temp file
-.temp
-package-lock.json
-yarn.lock
+*.swp
+.DS_Store
+Thumbs.db
+
+# 测试相关
+coverage/
+.nyc_output/
+
+# 其他可能的临时文件
+*.tmp
+*.temp
+
