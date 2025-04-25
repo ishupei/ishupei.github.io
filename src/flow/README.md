@@ -13,7 +13,7 @@ icon: cubes
 ---
 
 <div>
-<iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;width:100%; height:500px;" src="https://www.processon.com/embed/643fa49ef1144c2157897a8e"></iframe>
+<iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;width:100%; height:600px;" src="https://www.processon.com/embed/643fa49ef1144c2157897a8e"></iframe>
 
 </div>
 

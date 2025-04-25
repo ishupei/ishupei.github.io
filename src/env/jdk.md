@@ -1,5 +1,7 @@
 ---
 title: JDK
+category:
+  - 环境部署
 ---
 ### JDK 安装
 

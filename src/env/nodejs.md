@@ -1,5 +1,7 @@
 ---
 title: NodeJs
+category:
+  - 环境部署
 ---
 ### nodejs 安装流程
 - 安装包下载地址：<a href="/env/">点击</a>

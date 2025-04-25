@@ -1,5 +1,7 @@
 ---
 title: MySQL
+category:
+  - 环境部署
 ---
 
 ### mysql
