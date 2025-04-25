@@ -13,7 +13,10 @@
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.21",
     "@vuepress/plugin-docsearch": "2.0.0-rc.95",
+    "element-plus": "^2.9.8",
     "sass-embedded": "^1.86.3",
+    "unplugin-auto-import": "^19.1.2",
+    "unplugin-vue-components": "^28.5.0",
     "vue": "^3.5.13",
     "vuepress": "2.0.0-rc.21",
     "vuepress-theme-hope": "2.0.0-rc.82"
@@ -22,5 +25,9 @@
     "onlyBuiltDependencies": [
       "esbuild"
     ]
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "dayjs": "^1.11.13"
   }
 }

@@ -54,7 +54,7 @@ jobs:
 
       # 6. 仅 master 分支推送时部署
       - name: 部署文档
-        if: github.ref == 'refs/heads/master'  # 条件触发
+        if: github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

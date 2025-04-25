@@ -8,3 +8,4 @@ heroText:
 tagline: 你灵魂的欲望是你命运的先知
 
 ---
+<HomePage />

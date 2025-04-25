@@ -1,37 +1,55 @@
 {
-  "hash": "6fb95255",
-  "configHash": "0ac9a9ea",
-  "lockfileHash": "54b776fe",
-  "browserHash": "918060c8",
+  "hash": "5571b761",
+  "configHash": "68760cba",
+  "lockfileHash": "1d47e4d0",
+  "browserHash": "e2109d1b",
   "optimized": {
     "@vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.7.5/node_modules/@vue/devtools-api/dist/index.js",
       "file": "@vue_devtools-api.js",
-      "fileHash": "bf03ddc0",
+      "fileHash": "ee469afb",
       "needsInterop": false
     },
     "@vuepress/shared": {
       "src": "../../../../node_modules/.pnpm/@vuepress+shared@2.0.0-rc.21/node_modules/@vuepress/shared/dist/index.js",
       "file": "@vuepress_shared.js",
-      "fileHash": "f7dc0072",
+      "fileHash": "2444f73a",
       "needsInterop": false
     },
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.5.13/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "804fd257",
+      "fileHash": "846dfe4a",
       "needsInterop": false
     },
     "vue-router": {
       "src": "../../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router/dist/vue-router.esm-bundler.js",
       "file": "vue-router.js",
-      "fileHash": "ed104e2c",
+      "fileHash": "c4c2aed3",
+      "needsInterop": false
+    },
+    "element-plus": {
+      "src": "../../../../node_modules/.pnpm/element-plus@2.9.8_vue@3.5.13/node_modules/element-plus/es/index.mjs",
+      "file": "element-plus.js",
+      "fileHash": "805fa928",
+      "needsInterop": false
+    },
+    "@element-plus/icons-vue": {
+      "src": "../../../../node_modules/.pnpm/@element-plus+icons-vue@2.3.1_vue@3.5.13/node_modules/@element-plus/icons-vue/dist/index.js",
+      "file": "@element-plus_icons-vue.js",
+      "fileHash": "8bcf9c91",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-JN5NFW2R": {
-      "file": "chunk-JN5NFW2R.js"
+    "chunk-FKSUXDU4": {
+      "file": "chunk-FKSUXDU4.js"
+    },
+    "chunk-2WLDGLOW": {
+      "file": "chunk-2WLDGLOW.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
     }
   }
 }
