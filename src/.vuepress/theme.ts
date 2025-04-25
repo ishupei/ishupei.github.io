@@ -5,7 +5,7 @@ import sidebar from "./sidebar.js";
 import plugin from "./plugin.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
+  hostname: "https://ishupei.github.io",
 
   author: {
     name: "HuPei",
