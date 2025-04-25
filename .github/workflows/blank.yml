@@ -1,46 +1,65 @@
-name: Deploy Docs
+name: 部署文档
 
 on:
   push:
     branches: [ master ]
   workflow_dispatch:
 
+# 避免并发部署冲突
+concurrency:
+  group: deploy-docs-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
     steps:
+      # 1. 拉取代码
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # 获取完整 Git 历史（某些文档工具需要）
 
-      - name: Install pnpm
+      # 2. 缓存依赖（加速后续构建）
+      - name: 缓存 pnpm 依赖
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pnpm-store
+            node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('​**​/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
+      # 3. 安装 pnpm 和 Node.js
+      - name: 安装 pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10.x  # 使用与 lockfile 兼容的版本
+          version: 10.x  # 与 lockfile 兼容的版本
 
-      - name: Setup Node.js
+      - name: 安装 Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: pnpm  # 自动缓存 node_modules
 
-      - name: Install deps
+      # 4. 安装依赖（使用 frozen-lockfile 保证一致性）
+      - name: 安装依赖
         run: pnpm install --frozen-lockfile
 
-      - name: Build Packages
-        run: pnpm docs:build
-
-      - name: Docs build
+      # 5. 构建文档（增加内存限制和错误处理）
+      - name: 构建文档
         env:
-          NODE_OPTIONS: --max_old_space_size=8192
-        run: pnpm docs:build
+          NODE_OPTIONS: --max_old_space_size=8192  # 避免内存不足
+        run: pnpm build || (echo "构建失败！" && exit 1)
 
-      - name: Deploy docs
+      # 6. 仅 master 分支推送时部署
+      - name: 部署文档
+        if: github.ref == 'refs/heads/master'  # 条件触发
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # 改用 token 参数
-          branch: dist-pages
-          folder: src/.vuepress/dist
-          single-commit: true
-          clean: true  # 可选：部署前清理目标分支
-          force: true  # 可选：强制推送
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: dist-pages    # 目标分支
+          folder: src/.vuepress/dist  # 构建输出目录
+          single-commit: true   # 保持提交历史干净
+          clean: true           # 部署前清理旧文件
+          force: true           # 强制推送（覆盖历史）
