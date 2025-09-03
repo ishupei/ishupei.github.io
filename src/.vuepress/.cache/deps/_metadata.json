@@ -1,47 +1,56 @@
 {
-  "hash": "5571b761",
-  "configHash": "68760cba",
+  "hash": "047db17d",
+  "configHash": "7a6e340e",
   "lockfileHash": "1d47e4d0",
-  "browserHash": "e2109d1b",
+  "browserHash": "abb95d32",
   "optimized": {
     "@vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/@vue+devtools-api@7.7.5/node_modules/@vue/devtools-api/dist/index.js",
       "file": "@vue_devtools-api.js",
-      "fileHash": "ee469afb",
+      "fileHash": "bc61f457",
       "needsInterop": false
     },
     "@vuepress/shared": {
       "src": "../../../../node_modules/.pnpm/@vuepress+shared@2.0.0-rc.21/node_modules/@vuepress/shared/dist/index.js",
       "file": "@vuepress_shared.js",
-      "fileHash": "2444f73a",
+      "fileHash": "87a9c4ac",
       "needsInterop": false
     },
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.5.13/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "846dfe4a",
+      "fileHash": "a9cae6f2",
       "needsInterop": false
     },
     "vue-router": {
       "src": "../../../../node_modules/.pnpm/vue-router@4.5.0_vue@3.5.13/node_modules/vue-router/dist/vue-router.esm-bundler.js",
       "file": "vue-router.js",
-      "fileHash": "c4c2aed3",
+      "fileHash": "b27bfb89",
       "needsInterop": false
     },
     "element-plus": {
       "src": "../../../../node_modules/.pnpm/element-plus@2.9.8_vue@3.5.13/node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "805fa928",
+      "fileHash": "30e2c458",
       "needsInterop": false
     },
     "@element-plus/icons-vue": {
       "src": "../../../../node_modules/.pnpm/@element-plus+icons-vue@2.3.1_vue@3.5.13/node_modules/@element-plus/icons-vue/dist/index.js",
       "file": "@element-plus_icons-vue.js",
-      "fileHash": "8bcf9c91",
+      "fileHash": "dd07b774",
       "needsInterop": false
+    },
+    "dayjs": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.13/node_modules/dayjs/dayjs.min.js",
+      "file": "dayjs.js",
+      "fileHash": "8d2151c5",
+      "needsInterop": true
     }
   },
   "chunks": {
+    "chunk-LPHLQ6GV": {
+      "file": "chunk-LPHLQ6GV.js"
+    },
     "chunk-FKSUXDU4": {
       "file": "chunk-FKSUXDU4.js"
     },

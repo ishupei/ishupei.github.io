@@ -6,6 +6,6 @@ bgImageStyle:
   background-attachment: fixed
 heroText: 
 tagline: 你灵魂的欲望是你命运的先知
-
+footer: false
 ---
 <HomePage />
