@@ -1,7 +1,7 @@
 ---
 home: true
 icon: house
-title: 项目主页
+title: 主页
 bgImageStyle:
   background-attachment: fixed
 heroText: 
