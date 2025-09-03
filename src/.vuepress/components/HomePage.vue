@@ -6,7 +6,7 @@
         <p>当前计数：{{ count }}</p>
         <el-button type="primary">测试按钮</el-button>
         <el-button type="success" @click="$message.success('Hello')">点击测试2</el-button>
-        
+        <Edit />
     </div>
 </template>
 
