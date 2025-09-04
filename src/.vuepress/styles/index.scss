@@ -5,4 +5,12 @@
 // 使用主题 CSS 变量安全地扩宽 Markdown 内容宽度
 :root {
   --content-width: 1080px; // 默认约 740px
+  // 可配置右侧目录宽度（主题可能会读取该变量）
+  --toc-width: 350px;
+}
+
+// 调整右侧文章内锚点目录宽度（兼容选择器）
+aside#toc[vp-toc] {
+  width: var(--toc-width);
+  max-width: 34vw;
 }
