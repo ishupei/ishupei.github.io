@@ -1,11 +1,11 @@
 ---
-title: 异常
+title: 异常与泛型
 category: Java
 tag:
   - Java基础
 head:
 ---
-
+## 异常
 
 Java的所有异常和错误都继承自 `java.lang.Throwable`类。分为两大分支：
 
@@ -16,7 +16,7 @@ Java的所有异常和错误都继承自 `java.lang.Throwable`类。分为两大
 
 
 
-![image-20250904233633905](https://gitee.com/ishupei/picgo_img/raw/master/typora/image-20250904233633905.png)
+![异常继承关系图](https://gitee.com/ishupei/picgo_img/raw/master/typora/image-20250904233633905.png)
 
 
 
@@ -97,4 +97,21 @@ Java的所有异常和错误都继承自 `java.lang.Throwable`类。分为两大
 - 抛出的异常信息一定要有意义。
 - 建议抛出更加具体的异常，比如字符串转换为数字格式错误的时候应该抛出`NumberFormatException`而不是其父类`IllegalArgumentException`。
 - 避免重复记录日志：如果在捕获异常的地方已经记录了足够的信息（包括异常类型、错误信息和堆栈跟踪等），那么在业务代码中再次抛出这个异常时，就不应该再次记录相同的错误信息。重复记录日志会使得日志文件膨胀，并且可能会掩盖问题的实际原因，使得问题更难以追踪和解决
+
+
+## 泛型
+
+**Java 泛型（Generics）** 是 JDK 5 中引入的一个新特性。使用泛型参数，可以增强代码的可读性以及稳定性。使用方式:**泛型类**、**泛型接口**、**泛型方法**。
+
+编译器可以对泛型参数进行检测，并且通过泛型参数可以指定传入的对象类型。比如 `ArrayList<Person> persons = new ArrayList<Person>()` 这行代码就指明了该 `ArrayList` 对象只能传入 `Person` 对象，如果传入其他类型的对象就会报错
+
+**类型擦除**
+
+1. **编译时检查，运行时擦除**：泛型信息只存在于编译阶段，运行时JVM看到的都是原始类型（Raw Type）
+
+2. **擦除规则**：
+   - 无界类型参数`<T>` → `Object`
+   - 有界类型参数`<T extends Number>` → `Number`
+   - 泛型方法参数类型同样被擦除
+   
 

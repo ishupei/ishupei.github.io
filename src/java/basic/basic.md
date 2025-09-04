@@ -1,5 +1,5 @@
 ---
-title: 基础
+title: 语言基础
 category: Java
 tag:
   - Java基础

@@ -11,18 +11,24 @@ export default sidebar({
       prefix: "java/",
       children: [
         {
-          text: "语言基础",
+          text: "JAVA基础",
           prefix: "basic/",
           icon: "cubes-stacked",
           collapsible: true,
           children: [
             "basic",
-            "exception",
-            "generics",
-            "reflection",
-            "annotation",
-            "io",
-            
+            "exception-generics",
+            "reflection-annotation",
+            "io-nio",
+            {
+              text: "集合",
+              prefix: "collection/",
+              collapsible: true,
+              children: [
+                "index",
+                "hashmap"
+              ],
+            },
           ],
         },
         {
@@ -31,6 +37,7 @@ export default sidebar({
           icon: "water",
           collapsible: true,
           children: [
+            
           ],
         },
         {

@@ -21,7 +21,6 @@ footer: false
 
 ## 技能点
 
-已经点亮的技能点有：</br>
 <B>后端</B>
 
 - Java Web

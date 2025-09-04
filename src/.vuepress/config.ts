@@ -26,6 +26,8 @@ export default defineUserConfig({
   head: [
     // PWA相关（可选）
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    // 全站关闭 Referer，用于外链图（如 gitee/raw）避免防盗链
+    ['meta', { name: 'referrer', content: 'no-referrer' }],
   ],
 });
