@@ -1,3 +1,8 @@
 // place your custom styles here
 // 引入 Element Plus 样式
 @use "element-plus/theme-chalk/src/index.scss" as *;
+
+// 使用主题 CSS 变量安全地扩宽 Markdown 内容宽度
+:root {
+  --content-width: 1080px; // 默认约 740px
+}
