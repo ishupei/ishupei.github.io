@@ -46,7 +46,6 @@ const testApi = async () => {
         // 使用全局的$request方法
         const response = await $request.get('/test');
         data.value = response;
-        console.log('API调用成功:', response);
     } catch (error) {
         console.error('API调用失败:', error);
         // 可以在这里添加错误提示

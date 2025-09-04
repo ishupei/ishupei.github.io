@@ -34,7 +34,7 @@ const service = axios.create({
  * @returns {Promise} 
  */
 export function get(url, params = {}, config = {}) {
-    return service.get(url, { params, ...config })
+    return service.get(url, { params, ...config }).then(res => res.data)
 }
 
 /**
@@ -45,7 +45,7 @@ export function get(url, params = {}, config = {}) {
  * @returns {Promise}
  */
 export function post(url, data = {}, config = {}) {
-    return service.post(url, data, config)
+    return service.post(url, data, config).then(res => res.data)
 }
 
 /**
@@ -56,7 +56,7 @@ export function post(url, data = {}, config = {}) {
  * @returns {Promise}
  */
 export function put(url, data = {}, config = {}) {
-    return service.put(url, data, config)
+    return service.put(url, data, config).then(res => res.data)
 }
 
 /**
@@ -67,7 +67,7 @@ export function put(url, data = {}, config = {}) {
  * @returns {Promise}
  */
 export function del(url, params = {}, config = {}) {
-    return service.delete(url, { params, ...config })
+    return service.delete(url, { params, ...config }).then(res => res.data)
 }
 
 /**
@@ -78,7 +78,7 @@ export function del(url, params = {}, config = {}) {
  * @returns {Promise}
  */
 export function patch(url, data = {}, config = {}) {
-    return service.patch(url, data, config)
+    return service.patch(url, data, config).then(res => res.data)
 }
 
 /**
@@ -94,7 +94,7 @@ export function upload(url, formData, config = {}) {
             'Content-Type': 'multipart/form-data'
         },
         ...config
-    })
+    }).then(res => res.data)
 }
 
 /**
@@ -110,7 +110,7 @@ export function download(url, params = {}, filename) {
         responseType: 'blob'
     }).then(response => {
         // 创建下载链接
-        const blob = new Blob([response])
+        const blob = new Blob([response.data])
         const downloadUrl = window.URL.createObjectURL(blob)
         const link = document.createElement('a')
         link.href = downloadUrl

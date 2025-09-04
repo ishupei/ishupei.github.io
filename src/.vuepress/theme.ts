@@ -1,6 +1,7 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
+import { themePlugins } from "./plugin.js";
 
 export default hopeTheme({
   hostname: "https://ishupei.github.io",
@@ -68,18 +69,8 @@ export default hopeTheme({
     vPre: true,
   },
 
-  plugins: {
-    // 保留主题内置插件
-    components: {
-      components: ["Badge", "VPCard"],
-    },
-    // 禁用主题自带的docsearch避免冲突
-    // docsearch: false,
-
-    icon: {
-      prefix: "fa6-solid:",
-    },
-  },
+  // move to plugin.ts
+  plugins: themePlugins,
 }, {
   custom: true,
 });
