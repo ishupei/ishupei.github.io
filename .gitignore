@@ -11,6 +11,11 @@ src/.vuepress/.cache/
 .vuepress/.temp/
 src/.vuepress/public/  # 如果手动创建了 public 目录（通常不需要）
 
+# 确保所有缓存文件都被忽略
+src/.vuepress/.cache/**
+.vuepress/.temp/**
+.vuepress/.cache/**
+
 logs/
 *.log
 npm-debug.log*
@@ -23,7 +28,7 @@ yarn-error.log*
 .vscode/
 .idea/
 *.suo
-*.ntvs*
+*.ntvs*.*
 *.njsproj
 *.sln
 *.swp
@@ -35,5 +40,3 @@ coverage/
 
 *.tmp
 *.temp
-
-src/.vuepress/.cache/deps/

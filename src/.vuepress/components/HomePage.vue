@@ -7,6 +7,12 @@
             <el-button type="primary" class="action-btn">测试按钮</el-button>
             <el-button type="success" class="action-btn" @click="$message.success('Hello')">点击测试2</el-button>
         </div>
+        
+        <!-- 显示API数据 -->
+        <div v-if="data" class="api-data">
+            <h3>API测试数据:</h3>
+            <pre>{{ JSON.stringify(data, null, 2) }}</pre>
+        </div>
 
         <el-col :span="12" class="time-container">
             <div class="right cards">
@@ -32,6 +38,23 @@ import { getCurrentTime } from "../utils/getTime";
 
 const currentTime = ref({});
 const timeInterval = ref(null);
+const data = ref(null);
+
+// 使用全局注册的$request方法
+const testApi = async () => {
+    try {
+        // 使用全局的$request方法
+        const response = await $request.get('/test');
+        data.value = response;
+        console.log('API调用成功:', response);
+    } catch (error) {
+        console.error('API调用失败:', error);
+        // 可以在这里添加错误提示
+        if (typeof $message !== 'undefined') {
+            $message.error('API调用失败');
+        }
+    }
+};
 
 const updateTimeData = () => {
     currentTime.value = getCurrentTime();
@@ -40,6 +63,9 @@ const updateTimeData = () => {
 onMounted(() => {
     updateTimeData();
     timeInterval.value = setInterval(updateTimeData, 1000);
+    
+    // 测试API调用
+    testApi();
 });
 
 onBeforeUnmount(() => {

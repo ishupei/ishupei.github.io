@@ -6,7 +6,11 @@
   },
   "include": [
     "src/.vuepress/**/*.ts",
-    "src/.vuepress/**/*.vue"
+    "src/.vuepress/**/*.vue",
+    "src/.vuepress/**/*.js",
+    "src/.vuepress/utils/request.js",
+    "src/.vuepress/plugins/request.js",
+    "src/.vuepress/client/request.js"
   ],
   "exclude": [
     "node_modules"
