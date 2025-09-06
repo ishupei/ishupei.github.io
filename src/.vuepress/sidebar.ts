@@ -90,6 +90,33 @@ export default sidebar({
         },
       ],
     },
+    {
+      text: "数据库",
+      icon: "database",
+      prefix: "database/",
+      collapsible: true,
+      children: [
+        {
+          text: "MySQL",
+          prefix: "mysql/",
+          icon: "server",
+          collapsible: true,
+          children: [
+            "",
+          ],
+        },
+        {
+          text: "Redis",
+          prefix: "redis/",
+          icon: "server",
+          collapsible: true,
+          children: [
+            "basic",
+          ],
+        },
+       
+      ],
+    },
   ],
 });
 
